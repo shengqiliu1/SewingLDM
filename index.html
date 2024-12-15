@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multimodal Latent Diffusion Model for Complex Sewing Pattern Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/item3d.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<script
+  type="module"
+  src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"
+></script>
+
+<style>
+  body {
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+
+  nav {
+    position: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: ghostwhite;
+    z-index: 100;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  nav ul {
+    padding: 0;
+    margin: auto;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: auto;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 5px;
+    /*      color: #fff;*/
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  nav ul li a:hover {
+    background-color: #555;
+  }
+
+  /* iframe 容器 */
+  .iframe-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* 提示器 */
+  .tooltip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.2s, opacity 0.2s;
+  }
+
+  /* 鼠标悬停在 iframe 容器时隐藏提示器 */
+  .iframe-container:hover .tooltip {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .title {
+    font-size: 41px;
+  }
+
+  /*  teaser font-size  */
+  .teaserTitle {
+    font-size: 76px;
+  }
+
+  .subTeaserTitle {
+    font-size: 15px;
+  }
+
+  .carousel-indicators {
+    bottom: -26px;
+  }
+
+  .carousel-control.left,
+  .carousel-control.right {
+    background-image: none !important;
+    filter: none !important;
+    width: 20px;
+  }
+
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .column {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .carousel-indicators ol {
+    width: 100%;
+  }
+
+  .carousel-indicators li {
+    height: 3px !important;
+    border-radius: 0px !important;
+    width: 25%;
+  }
+</style>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Multimodal Latent Diffusion Model for Complex Sewing Pattern Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Shengqi Liu<sup>1</sup>,</span>
+            <span class="author-block">
+              Yuhao Cheng<sup>1</sup>,</span>
+            <span class="author-block">
+              Zhuo Chen<sup>1</sup>,</span>
+            <span class="author-block">
+              Xingyu Ren<sup>1</sup>, </span>
+            <span class="author-block">
+              Wenhan Zhu<sup>2</sup>, </span>
+            <p>
+            <span class="author-block">
+              Lincheng Li<sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Mengxiao Bi<sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://english.seiee.sjtu.edu.cn/english/detail/842_802.htm">Xiaokang Yang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://daodaofr.github.io/">Yichao Yan</a><sup>1&dagger;</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>MoE Key Lab of Artificial Intelligence, Shanghai Jiao Tong University,</span> <p>
+            <span class="author-block"><sup>2</sup> Xueshen AI, </span> <span class="author-block"><sup>3</sup> NetEase Fuxi AI Lab </span>
+            <p>
+            <div class="is-size-6">
+              <span>(<sup>&dagger;</sup>Corresponding author)</span>
+            </div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/pdf/SewingLDM.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/shengqiliu1/SewingLDM"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  <span class="icon">
+                      <img src="./static/images/soon.png" alt="Soon Icon" style="width: 20px; height: 20px; filter: invert(100%);">
+                  </span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img class="img-responsive" src="./static/images/teaser.png" alt="Teaser">
+      <h2 class="subtitle has-text-justified">
+        <span class="SewingLDM"> SewingLDM can generate complex sewing pattern designs under the condition of texts, garment sketches, and body shapes, demonstrating detailed control ability. The generated garments can be seamlessly integrated into the CG pipeline for simulation and animation, achieving vivid and photo-realistic rendering results.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <div class="columns is-centered has-text-centered">
+          <div class="column content">
+
+            <!-- <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/introcution_video.mp4"
+                    type="video/mp4">
+            </video> -->
+
+            <!-- <img src="./static/images/real_dataset.png" alt="Pulpit rock" width="1598" height="678"> -->
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- <p>
+            We present the first method capable of photorealistically reconstructing a non-rigidly
+            deforming scene using photos/videos captured casually from mobile phones.
+          </p> -->
+          <p>
+            Generating sewing patterns in garment design is receiving increasing attention due to its CG-friendly and flexible-editing nature. Previous sewing pattern generation methods have been able to produce exquisite clothing, but struggle to design complex garments with detailed control. To address these issues, we propose <strong>SewingLDM</strong>, a multi-modal generative model that generates sewing patterns controlled by text prompts, body shapes, and garment sketches. Initially, we extend the original vector of sewing patterns into a more comprehensive representation to cover more intricate details and then compress them into a compact latent space. To learn the sewing pattern distribution in the latent space, we design a two-step training strategy to inject the multi-modal conditions, i.e., body shapes, text prompts, and garment sketches, into a diffusion model, ensuring the generated garments are body-suited and detail-controlled. Comprehensive qualitative and quantitative experiments show the effectiveness of our proposed method, significantly surpassing previous approaches in terms of complex garment design and various body adaptability.
+          </p>
+          <!-- p>
+            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
+            photos/videos into deformable NeRF
+            models that allow for photorealistic renderings of the subject from arbitrary
+            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
+            using a
+            rig with two mobile phones that take time-synchronized photos, yielding train/validation
+            images of the same pose at different viewpoints. We show that our method faithfully
+            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
+            fidelity.
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/introcution_video.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Method Overview</h2>
+      <p></p>
+    </div>
+
+    <div class="columns is-centered has-text-justified">
+      <div class="column">
+          <img src="./static/images/pipeline.png" alt="Pulpit rock" width="2050" height="534">
+            <p>
+            <b>Multimodal latent diffusion model.</b> To balance multi-modal conditions and facilitate future conditional scalability, we design a two-step training strategy: 1) In the first step, we train the latent diffusion model only under the text guidance; 2) In the second step, we embed the knowledge of body shapes and garment sketches into the diffusion model for detailed control and body-suited garment generation. We fuse the features of sketches and body shapes and normalize them into the diffusion model, with fine-tuning minimal parameters of the diffusion model. The trained network parameters are depicted in orange, while the frozen parameters are shown in purple. The output latent is then quantized into a designed latent space and serves as the input of the decoder to yield all edge lines. Edge lines connect from beginning to end to form panels, placed on the corresponding body regions. Finally, we can get suited garments through the modern CG pipeline.
+            </p>
+      </div>
+    </div>
+
+    
+    </div>
+    
+</section>
+
+<!-- Results. -->
+<section class="section">
+  <div class="container is-max-desktop" style="margin-top: 30px;">
+    <h2 class="title is-3">Results</h2>
+    
+    <h3 class="title is-4">Animation Results</h3>
+    <div>
+        <section class="section" style="overflow:hidden">
+          <div class="container">
+              <div id="post_images_1" class="carousel">
+                  <div class="item-1">
+                      <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                          <source src="./static/video/cloth1.mp4" type="video/mp4">
+                      </video>
+                  </div>
+                  <div class="item-2">
+                      <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                          <source src="./static/video/cloth2.mp4" type="video/mp4">
+                      </video>
+                  </div>
+                  <div class="item-3">
+                      <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                          <source src="./static/video/cloth3.mp4" type="video/mp4">
+                      </video>
+                  </div>
+                  <div class="item-4">
+                      <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                          <source src="./static/video/cloth4.mp4" type="video/mp4">
+                      </video>
+                  </div>
+                  <div class="item-5">
+                      <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                          <source src="./static/video/cloth5.mp4" type="video/mp4">
+                      </video>
+                  </div>
+              </div>
+          </div>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+        <script>
+            bulmaCarousel.attach('#post_images_1', {
+                  slidesToScroll: 1,
+                  slidesToShow: 3,
+                  loop: true,
+            });
+        </script>
+    </div>
+
+    <h3 class="title is-4">Comparison with Baselines</h3>
+    <div>
+        <section class="section" style="overflow:hidden">
+            <div class="container">
+                <div id="post_images_2" class="carousel">
+                    <div class="item-1">
+                        <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                            <source src="./static/video/compare_demo_1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item-2">
+                        <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                            <source src="./static/video/compare_demo_2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item-3">
+                        <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                            <source src="./static/video/compare_demo_3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+        <script>
+            bulmaCarousel.attach('#post_images_2', {
+                  slidesToScroll: 1,
+                  slidesToShow: 1,
+                  loop: true,
+            });
+        </script>
+    </div>
+
+    <h3 class="title is-4">More Generation Results</h3>
+    <div>
+    <section class="section" style="overflow:hidden">
+      <div class="container">
+          <div id="post_images_3" class="carousel">
+              <div class="item-1">
+                  <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                      <source src="./static/video/cloth_1.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item-2">
+                  <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                      <source src="./static/video/cloth_2.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item-3">
+                  <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                      <source src="./static/video/cloth_3.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item-4">
+                  <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                      <source src="./static/video/cloth_4.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item-5">
+                  <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                      <source src="./static/video/cloth_5.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item-6">
+                  <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                      <source src="./static/video/cloth_6.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item-7">
+                  <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                      <source src="./static/video/cloth_7.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item-8">
+                  <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                      <source src="./static/video/cloth_8.mp4" type="video/mp4">
+                  </video>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+        <script>
+            bulmaCarousel.attach('#post_images_3', {
+                  slidesToScroll: 1,
+                  slidesToShow: 4,
+                  loop: true,
+            });
+        </script>
+    
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{https://doi.org/10.1111/cgf.15196,
+      author = {Liu, Shengqi and Chen, Zhuo and Gao, Jingnan and Yan, Yichao and Zhu, Wenhan and Lyu, Jiangjing and Yang, Xiaokang},
+      title = {Directional Texture Editing for 3D Models},
+      journal = {Computer Graphics Forum},
+      volume = {43},
+      number = {6},
+      pages = {e15196},
+      doi = {https://doi.org/10.1111/cgf.15196},
+      url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.15196},
+      eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/cgf.15196},
+      year = {2024}
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is constructed using the source code provided by <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            We are grateful for their template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
