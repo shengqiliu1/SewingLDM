@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python scripts/dress_multimodal_condition.py --config configs/diffusion/diffusion_stage_two.py --model_path models/sewingldm.pth --cfg_scale 1.0 --seed 1451 --use_text --use_sketch

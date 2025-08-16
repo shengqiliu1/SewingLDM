@@ -1,0 +1,155 @@
+{
+    "right_sleeve_b": [
+        "right_sleeve_b"
+    ],
+    "right_sleeve_f": [
+        "right_sleeve_f"
+    ],
+    "right_ftorso": [
+        "right_ftorso"
+    ],
+    "right_btorso": [
+        "right_btorso"
+    ],
+    "left_ftorso": [
+        "left_ftorso"
+    ],
+    "left_btorso": [
+        "left_btorso"
+    ],
+    "left_sleeve_f": [
+        "left_sleeve_f"
+    ],
+    "left_sleeve_b": [
+        "left_sleeve_b"
+    ],
+    "left_collar_back": [
+        "left_collar_back"
+    ],
+    "left_collar_front": [
+        "left_collar_front"
+    ],
+    "right_collar_front": [
+        "right_collar_front"
+    ],
+    "right_collar_back": [
+        "right_collar_back"
+    ],
+    "sl_right_cuff_f": [
+        "sl_right_cuff_f"
+    ],
+    "sl_right_cuff_b": [
+        "sl_right_cuff_b"
+    ],
+    "sl_right_cuff_skirt_f": [
+        "sl_right_cuff_skirt_f"
+    ],
+    "sl_right_cuff_skirt_b": [
+        "sl_right_cuff_skirt_b"
+    ],
+    "sl_left_cuff_skirt_f": [
+        "sl_left_cuff_skirt_f"
+    ],
+    "sl_left_cuff_skirt_b": [
+        "sl_left_cuff_skirt_b"
+    ],
+    "sl_left_cuff_f": [
+        "sl_left_cuff_f"
+    ],
+    "sl_left_cuff_b": [
+        "sl_left_cuff_b"
+    ],
+    "left_hood": [
+        "left_hood"
+    ],
+    "right_hood": [
+        "right_hood"
+    ],
+    "wb_back": [
+        "wb_back"
+    ],
+    "wb_front": [
+        "wb_front"
+    ],
+    "bottom_panel_0": [
+        "pant_f_l",
+        "skirt_front",
+        "skirt_panel_0"
+    ],
+    "bottom_panel_1": [
+        "pant_b_l",
+        "skirt_back",
+        "skirt_panel_1"
+    ],
+    "bottom_panel_2": [
+        "pant_f_r",
+        "skirt_front_0",
+        "ins_skirt_front_0",
+        "skirt_panel_2"
+    ],
+    "bottom_panel_3": [
+        "pant_b_r",
+        "skirt_back_0",
+        "ins_skirt_back_0",
+        "skirt_panel_3"
+    ],
+    "bottom_panel_4": [
+        "pant_r_cuff_skirt_f",
+        "skirt_front_1",
+        "ins_skirt_front_1",
+        "skirt_panel_4"
+    ],
+    "bottom_panel_5": [
+        "pant_r_cuff_skirt_b",
+        "skirt_back_1",
+        "ins_skirt_back_1",
+        "skirt_panel_5"
+    ],
+    "bottom_panel_6": [
+        "pant_l_cuff_skirt_f",
+        "ins_skirt_front_2",
+        "skirt_panel_6",
+        "skirt_front_2"
+    ],
+    "bottom_panel_7": [
+        "pant_l_cuff_skirt_b",
+        "ins_skirt_back_2",
+        "skirt_panel_7",
+        "skirt_back_2"
+    ],
+    "bottom_panel_8": [
+        "pant_l_cuff_f",
+        "ins_skirt_front_3",
+        "skirt_panel_8",
+        "skirt_front_3"
+    ],
+    "bottom_panel_9": [
+        "pant_l_cuff_b",
+        "ins_skirt_back_3",
+        "skirt_panel_9",
+        "skirt_back_3"
+    ],
+    "bottom_panel_10": [
+        "pant_r_cuff_f",
+        "ins_skirt_front_4",
+        "skirt_panel_10",
+        "skirt_front_4"
+    ],
+    "bottom_panel_11": [
+        "pant_r_cuff_b",
+        "ins_skirt_back_4",
+        "skirt_panel_11",
+        "skirt_back_4"
+    ],
+    "bottom_panel_12": [
+        "skirt_panel_12",
+        "ins_skirt_front_5"
+    ],
+    "bottom_panel_13": [
+        "skirt_panel_13",
+        "ins_skirt_back_5"
+    ],
+    "skirt_panel_14": [
+        "skirt_panel_14"
+    ]
+}
